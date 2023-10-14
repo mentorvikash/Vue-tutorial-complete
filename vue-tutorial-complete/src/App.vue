@@ -1,8 +1,33 @@
 <template>
-  <h1>Getter and Setter</h1>
-  <h2>Non-Computed fullName {{ fname }} {{ lname }}</h2>
-  <h2>Computed fullName {{ fullName }}</h2>
-  <button @click="setfullName">Change Name</button>
+  <h1>Watch: A way to watch a value and trigger some action at specific condition</h1>
+  <h2>Volume Tracker App</h2>
+  <div class="watcher-app-main">
+    <h3>{{ volume }}</h3>
+    <div>
+      <button @click="volume -= 2">Decrease</button>
+      <button @click=" volume += 2">Increase</button>
+    </div>
+    <div>
+      <h2>Hit Api Whem movie data change</h2>
+      <div>
+        <label for="movie-name">Movie Name</label>
+        <input type="text" id="movie-name" v-model="movieinfo.name" />
+      </div>
+      <div>
+        <label for="writer-name">Writer Name</label>
+        <input type="text" id="writer-name" v-model="movieinfo.writer.name" />
+      </div>
+
+      <div>
+        <label for="movie-name">Movie Name</label>
+        <input type="text" id="movie-name" v-model="movieinfo.name" />
+      </div>
+    </div>
+    <div>
+      <button @click="fruitList.push('papaya')">Add New Fruit</button>
+    </div>
+
+  </div>
 </template>
 
 <script>
@@ -10,35 +35,43 @@ export default {
   name: "App",
   data() {
     return {
-      fname: "revive",
-      lname: "codiing",
-    }
-  },
-  methods: {
-    // trigger this method -> Computed fullName trigger -> set fucntion to set new fname and lname.
-    setfullName() {
-      this.fullName = "vikash singh"
-    }
-  },
-
-  computed: {
-    fullName: {
-      get() {
-        const fullname = this.fname + " " + this.lname
-        return fullname
+      volume: 0,
+      movieinfo: {
+        name: "batman",
+        writer: {
+          name: "AK Aggrawal",
+          domain: ["drama", "comedy", "romance"]
+        }
       },
-      set(value) {
-        const nameArray = value.split(" ");
-        this.fname = nameArray[0]
-        this.lname = nameArray[1]
+      fruitList: ["apple", "orange", "banana"]
+    }
+  },
+  methods: {},
+
+  computed: {},
+  watch: {
+    // Name to the watch fucntion is same as that of variable to track
+    volume(newvalue, oldvalue) {
+      if (newvalue > oldvalue && newvalue == 14) {
+        alert("Listing to high volume for long may damage your ears")
       }
     },
-    totalPrice() {
-      const total = this.items.reduce((total, current) => (total + current.price), 0)
-      return total
+    movieinfo: {
+      handler(newvalue) {
+        if (newvalue) {
+          console.log("name: " + this.movieinfo.name + ", writer: " + this.movieinfo.writer.name + " work with " + this.movieinfo.writer.domain.join(','))
+        }
+      },
+      immediate: true,
+      deep: true,
+    },
+    fruitList: {
+      handler(newvalue) {
+        console.log(`list of all fruit we have: ${newvalue.join(',')}`)
+      },
+      deep: true,
     }
   }
-
 }
 
 </script>
@@ -46,7 +79,7 @@ export default {
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  /* text-align: center; */
+  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
 }
