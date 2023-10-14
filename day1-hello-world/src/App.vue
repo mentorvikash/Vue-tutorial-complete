@@ -1,8 +1,10 @@
 <template>
-  <h2 v-if="count === 0"> if block: Number is Zero</h2>
-  <h2 v-else-if="count > 0">else if block: Number is grater then zero</h2>
-  <h2 v-else-if="count < 0">else if block: Number is Less then zero</h2>
-  <h2 v-else>else block if non condition meet: Not a Number</h2>
+  <h1>Methods in Vuejs</h1>
+  <h2>sum of number : {{ 5 + 42 + 25 }}</h2>
+  <h2>adding of two string: {{ "firstname" + " " + "lastname" }}</h2>
+  <h2>Addtion by add method: {{ add(10, 5) }}</h2>
+  <h2>subtraction by sub method: {{ sub(10, 5) }}</h2>
+  <h2>multitiply by multiple method: {{ multiple(12) }}</h2>
 </template>
 
 <script>
@@ -10,39 +12,30 @@ export default {
   name: "App",
   data() {
     return {
-      count: "fdfa",
-    };
+      baseNumber: 12
+    }
   },
+  methods: {
+    add(a, b) {
+      return a + b;
+    },
+
+    sub(a, b) {
+      return a - b;
+    },
+
+    multiple(num) {
+      return this.baseNumber * num;
+    }
+  }
 }
 </script>
 
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-}
-
-.underline {
-  text-decoration: underline;
-}
-
-.success {
-  color: green
-}
-
-.promoted {
-  font-style: italic;
-}
-
-.new {
-  color: orchid
-}
-
-.sold-out {
-  color: red;
 }
 </style>
