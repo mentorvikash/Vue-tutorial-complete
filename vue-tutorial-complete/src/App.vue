@@ -1,14 +1,8 @@
 <template>
-  <h1>Render Conditional Items with Computed Block</h1>
-  <h3 :style="{ color: 'green' }"> When ever possible we have to render a list of item we have to go with computed item
-  </h3>
-  <h2>Print item name price grater then 180</h2>
-  <h2 :style="{ color: 'green' }">Code directly in UI</h2>
-  <div v-for="item in items" :key="item.id">
-    <h3 v-if="item.price > 180"> {{ item.name }} {{ item.price }}</h3>
-  </div>
-  <h2 :style="{ color: 'green' }">Code from computed block</h2>
-  <h3 v-for=" item in filterItems" :key="item.id"> {{ item.name + " " + item.price }} </h3>
+  <h1>Getter and Setter</h1>
+  <h2>Non-Computed fullName {{ fname }} {{ lname }}</h2>
+  <h2>Computed fullName {{ fullName }}</h2>
+  <button @click="setfullName">Change Name</button>
 </template>
 
 <script>
@@ -16,32 +10,32 @@ export default {
   name: "App",
   data() {
     return {
-      items: [
-        {
-          id: 1,
-          name: 'tv',
-          price: 120
-        },
-        {
-          id: 2,
-          name: 'phone',
-          price: 200
-
-        },
-        {
-          id: 3,
-          name: 'laptop',
-          price: 250
-        }
-      ]
+      fname: "revive",
+      lname: "codiing",
     }
   },
   methods: {
+    // trigger this method -> Computed fullName trigger -> set fucntion to set new fname and lname.
+    setfullName() {
+      this.fullName = "vikash singh"
+    }
   },
 
   computed: {
-    filterItems() {
-      return this.items.filter(item => item.price > 180)
+    fullName: {
+      get() {
+        const fullname = this.fname + " " + this.lname
+        return fullname
+      },
+      set(value) {
+        const nameArray = value.split(" ");
+        this.fname = nameArray[0]
+        this.lname = nameArray[1]
+      }
+    },
+    totalPrice() {
+      const total = this.items.reduce((total, current) => (total + current.price), 0)
+      return total
     }
   }
 

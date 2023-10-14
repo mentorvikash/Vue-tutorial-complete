@@ -1,84 +1,15 @@
 <template>
-    <h1>Computed Value vs Methord</h1>
-    <h3>Here we had used 4 Modifire .trim .age .number and .prevent</h3>
-    <div>
-        <pre>
-      {{ JSON.stringify(formData, null, 2) }}
-    </pre>
-    </div>
-    <form class="form-main" @submit.prevent="handleFormSubmit">
-        <div>
-            <label for="name">Name: </label>
-            <input type="text" id="name" v-model.trim="formData.name">
-        </div>
-        <div>
-            <label for="email">Email: </label>
-            <input type="text" id="email" v-model="formData.email">
-        </div>
-
-        <div>
-            <label for="profile">Profile Summery: </label>
-            <textarea id="profile" v-model.lazy="formData.profileSummery" />
-        </div>
-        <div>
-            <label for="country">Select Country</label>
-            <select id="country" v-model="formData.country">
-                <option value="">---select your country---</option>
-                <option value="India">India</option>
-                <option value="United Kingdom">United Kingdom</option>
-                <option value="United State">United State</option>
-            </select>
-        </div>
-        <div>
-            <label for="job-location">Select Job Location</label>
-            <select id="job-location" multiple v-model="formData.jobLocation">
-                <option value="India">India</option>
-                <option value="Germary">Germary</option>
-                <option value="United State">United State</option>
-                <option value="Japan">Japan</option>
-                <option value="United Kingdom">United Kingdom</option>
-            </select>
-        </div>
-        <div>
-            <label for="remote-work">Romote Location: </label>
-            <input type="checkbox" id="remote-work" v-model="formData.remoteLocation" true-value="Yes" false-value="No">
-        </div>
-
-        <div>
-            <label><b>Skills: </b></label>
-            <input type="checkbox" id="html" value="html" v-model="formData.skills" />
-            <label for="html">HTML</label>
-            <input type="checkbox" id="css" value="css" v-model="formData.skills" />
-            <label for="css">CSS</label>
-            <input type="checkbox" id="javascript" value="javascript" v-model="formData.skills" />
-            <label for="javascript"> Javascript </label>
-            <input type="checkbox" id="vue" value="vue.js" v-model="formData.skills" />
-            <label for="vue"> Vue </label>
-        </div>
-
-        <div class="experience-block">
-            <label><b>Years of experience: </b></label>
-            <input type="radio" id="0-1" value="0-1" v-model="formData.experienceYear">
-            <label for="0-1">0-1</label>
-            <input type="radio" id="2-6" value="2-6" v-model="formData.experienceYear">
-            <label for="2-6">2-6</label>
-            <input type="radio" id="6+" value="6+" v-model="formData.experienceYear">
-            <label for="6+"> 6+ </label>
-        </div>
-
-        <h4 :style="{ color: 'green' }"> Note: Here when you enter your age and hit enter your from get submitted</h4>
-        <div>
-            <label for="age">Age: </label>
-            <input @keyup.enter="handleFormSubmit" type="number" id="age" v-model.number="formData.age">
-        </div>
-        <h4 :style="{ color: 'green' }">Note: Bounus Directive</h4>
-        <!-- <button type="submit">Submit</button> -->
-    </form>
-    <div v-once>
-        <h3 v-pre>here we had use v-pre tag {{ staticText }}</h3>
-        <h3>{{ staticText }}</h3>
-        <button v-on:click="staticText = 'rajat singh'">change button</button>
-    </div>
+    <h1>Computed Vs Methords</h1>
+    <h2>Non-Computed fullName {{ fname }} {{ lname }}</h2>
+    <h2>Computed fullName {{ fullName }}</h2>
+    <h2>Non-Computed Price {{ items.reduce((total, current) => (total + current.price), 0) }}</h2>
+    <h3 :style="{ color: 'green' }">Computed Value gives ability to caculate once and use the same value at multiple
+        places</h3>
+    <h2>Compute Total Price {{ totalPrice }}</h2>
+    <h3>Let say we have a button on its click we add new item to items array</h3>
+    <button @click="addItem">Add Item</button>
+    <h3 :style="{ color: 'green' }">methord render every time when any state change while computed use cached data</h3>
+    <h2>Method fullName {{ fullNameM() }}</h2>
 </template>
   
 <script>
@@ -86,27 +17,58 @@ export default {
     name: "App",
     data() {
         return {
-            formData: {
-                name: "",
-                email: "",
-                profileSummery: "",
-                country: "",
-                jobLocation: [],
-                remoteLocation: 'No',
-                skills: [],
-                experienceYear: "",
-                age: null,
-            },
-            staticText: "vikash singh"
+            fname: "revive",
+            lname: "codiing",
+            items: [
+                {
+                    id: 1,
+                    name: 'tv',
+                    price: 120
+                },
+                {
+                    id: 2,
+                    name: 'phone',
+                    price: 50
+
+                },
+                {
+                    id: 3,
+                    name: 'laptop',
+                    price: 70
+
+                }
+            ]
         }
     },
     methods: {
-        handleFormSubmit() {
-            console.log("fromvalues", this.formData);
+        addItem() {
+            const obj = {
+                id: 4,
+                name: 'bottel',
+                price: 17
+            }
+            this.items.push(obj);
+        },
+        fullNameM() {
+            console.log("method block render")
+            return this.fname + " " + this.lname
+        }
+    },
+
+    computed: {
+        fullName() {
+            console.log("computed block render")
+            const fullname = this.fname + " " + this.lname
+            return fullname
+        },
+        totalPrice() {
+            const total = this.items.reduce((total, current) => (total + current.price), 0)
+            return total
         }
     }
 
 }
+
 </script>
   
 <style>
