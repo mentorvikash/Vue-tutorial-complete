@@ -1,15 +1,14 @@
 <template>
-  <h1>Modifire with form</h1>
-  <h2>Non-Computed fullName {{ fname }} {{ lname }}</h2>
-  <h2>Computed fullName {{ fullName }}</h2>
-  <h2>Non-Computed Price {{ items.reduce((total, current) => (total + current.price), 0) }}</h2>
-  <h3 :style="{ color: 'green' }">Computed Value gives ability to caculate once and use the same value at multiple
-    places</h3>
-  <h2>Compute Total Price {{ totalPrice }}</h2>
-  <h3>Let say we have a button on its click we add new item to items array</h3>
-  <button @click="addItem">Add Item</button>
-  <h3 :style="{ color: 'green' }">methord render every time when any state change while computed use cached data</h3>
-  <h2>Method fullName {{ fullNameM() }}</h2>
+  <h1>Render Conditional Items with Computed Block</h1>
+  <h3 :style="{ color: 'green' }"> When ever possible we have to render a list of item we have to go with computed item
+  </h3>
+  <h2>Print item name price grater then 180</h2>
+  <h2 :style="{ color: 'green' }">Code directly in UI</h2>
+  <div v-for="item in items" :key="item.id">
+    <h3 v-if="item.price > 180"> {{ item.name }} {{ item.price }}</h3>
+  </div>
+  <h2 :style="{ color: 'green' }">Code from computed block</h2>
+  <h3 v-for=" item in filterItems" :key="item.id"> {{ item.name + " " + item.price }} </h3>
 </template>
 
 <script>
@@ -17,8 +16,6 @@ export default {
   name: "App",
   data() {
     return {
-      fname: "revive",
-      lname: "codiing",
       items: [
         {
           id: 1,
@@ -28,42 +25,23 @@ export default {
         {
           id: 2,
           name: 'phone',
-          price: 50
+          price: 200
 
         },
         {
           id: 3,
           name: 'laptop',
-          price: 70
-
+          price: 250
         }
       ]
     }
   },
   methods: {
-    addItem() {
-      const obj = {
-        id: 4,
-        name: 'bottel',
-        price: 17
-      }
-      this.items.push(obj);
-    },
-    fullNameM() {
-      console.log("method block render")
-      return this.fname + " " + this.lname
-    }
   },
 
   computed: {
-    fullName() {
-      console.log("computed block render")
-      const fullname = this.fname + " " + this.lname
-      return fullname
-    },
-    totalPrice() {
-      const total = this.items.reduce((total, current) => (total + current.price), 0)
-      return total
+    filterItems() {
+      return this.items.filter(item => item.price > 180)
     }
   }
 
