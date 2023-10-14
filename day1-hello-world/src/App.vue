@@ -1,34 +1,10 @@
 <template>
-  <h1>Event Lisners with Counter App</h1>
-  <h2>{{ count }}</h2>
-  <!-- <div class="button-parent">
-    <button v-on:click="count += 1">Increment</button>
-    <button v-on:click="count -= 1">Decrement</button>
-  </div> -->
-  <div class="button-parent">
-    <button v-on:click="decrement">Decrement</button>
-    <button v-on:click="increment">Increment</button>
-  </div>
+  <h1>Topic: </h1>
 </template>
 
 <script>
 export default {
   name: "App",
-  data() {
-    return {
-      count: 0
-    }
-  },
-  methods: {
-    increment() {
-      this.count = this.count + 1;
-    },
-    decrement() {
-      if (this.count != 0) {
-        this.count -= 1
-      }
-    }
-  }
 }
 </script>
 
