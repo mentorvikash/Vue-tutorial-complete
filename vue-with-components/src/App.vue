@@ -4,13 +4,15 @@
   <LetGreet name="Vishal" fruit="Orange" />
   <LetGreet :name="name" :fruit="fruit" /> -->
   <!-- <ArticleData id="articleId" tilte="What is Cat" author="Mk Rao" :likes="15" :isPublished=true /> -->
-  <ComponentA />
+  <!-- <ComponentA /> -->
+  <PopupExample />
 </template> 
 
 <script>
 // import LetGreet from './components/greet.vue';
 // import ArticleData from './components/article.vue';
-import ComponentA from './components/nestedComponet/componentA.vue';
+// import ComponentA from './components/nestedComponet/componentA.vue';
+import PopupExample from './components/popup/index.vue';
 
 export default {
   name: 'App',
@@ -27,7 +29,8 @@ export default {
   components: {
     // LetGreet,
     // ArticleData,
-    ComponentA
+    // ComponentA,
+    PopupExample
   },
 }
 </script>
