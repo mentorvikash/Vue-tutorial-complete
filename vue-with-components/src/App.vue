@@ -3,12 +3,14 @@
   <LetGreet name="Rajat" fruit="Papaya" />
   <LetGreet name="Vishal" fruit="Orange" />
   <LetGreet :name="name" :fruit="fruit" /> -->
-  <ArticleData id="articleId" tilte="What is Cat" author="Mk Rao" :likes="15" :isPublished=true />
-</template>
+  <!-- <ArticleData id="articleId" tilte="What is Cat" author="Mk Rao" :likes="15" :isPublished=true /> -->
+  <ComponentA />
+</template> 
 
 <script>
 // import LetGreet from './components/greet.vue';
-import ArticleData from './components/article.vue'
+// import ArticleData from './components/article.vue';
+import ComponentA from './components/nestedComponet/componentA.vue';
 
 export default {
   name: 'App',
@@ -19,10 +21,14 @@ export default {
       default: "Artile Default Value"
     }
   },
+  provide: {
+    username: "Vikash Singh"
+  },
   components: {
     // LetGreet,
-    ArticleData
-  }
+    // ArticleData,
+    ComponentA
+  },
 }
 </script>
 
