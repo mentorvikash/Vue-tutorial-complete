@@ -1,13 +1,13 @@
-# day1-hello-world
+# 2nd Part of Vuejs Complete Course
 
-## Project setup
+## To use the same project in your local: first install dependency
 ```
-yarn install
+yarn install | npm install
 ```
 
-### Compiles and hot-reloads for development
+### Next to start server use
 ```
-yarn serve
+yarn serve | npm run serve
 ```
 
 ### Compiles and minifies for production
