@@ -7,7 +7,8 @@
   <!-- <ComponentA /> -->
   <PopupExample />
   <InputMain />
-  <SlotMain />
+  <!-- <SlotMain /> -->
+  <SlotAdvance />
 </template> 
 
 <script>
@@ -16,7 +17,8 @@
 // import ComponentA from './components/nestedComponet/componentA.vue';
 import PopupExample from './components/popup/index.vue';
 import InputMain from './components/customInput/index.vue';
-import SlotMain from './components/slots/index.vue';
+// import SlotMain from './components/slots/index.vue';
+import SlotAdvance from './components/slotsAdvance/index.vue';
 
 export default {
   name: 'App',
@@ -36,7 +38,8 @@ export default {
     // ComponentA,
     PopupExample,
     InputMain,
-    SlotMain
+    // SlotMain,
+    SlotAdvance
   },
 }
 </script>

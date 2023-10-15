@@ -1,6 +1,14 @@
 <template>
     <div class="card-main">
-        <slot></slot>
+        <div id="card-header">
+            <slot name="header"></slot>
+        </div>
+        <div id="card-body">
+            <slot></slot>
+        </div>
+        <div id="card-footer">
+            <slot name="footer"></slot>
+        </div>
     </div>
 </template>
 
