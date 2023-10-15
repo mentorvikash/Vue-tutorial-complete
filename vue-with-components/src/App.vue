@@ -6,6 +6,7 @@
   <!-- <ArticleData id="articleId" tilte="What is Cat" author="Mk Rao" :likes="15" :isPublished=true /> -->
   <!-- <ComponentA /> -->
   <PopupExample />
+  <InputMain />
 </template> 
 
 <script>
@@ -13,6 +14,7 @@
 // import ArticleData from './components/article.vue';
 // import ComponentA from './components/nestedComponet/componentA.vue';
 import PopupExample from './components/popup/index.vue';
+import InputMain from './components/customInput/index.vue';
 
 export default {
   name: 'App',
@@ -30,7 +32,8 @@ export default {
     // LetGreet,
     // ArticleData,
     // ComponentA,
-    PopupExample
+    PopupExample,
+    InputMain,
   },
 }
 </script>
