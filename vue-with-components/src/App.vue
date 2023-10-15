@@ -3,7 +3,7 @@
   <LetGreet name="Rajat" fruit="Papaya" />
   <LetGreet name="Vishal" fruit="Orange" />
   <LetGreet :name="name" :fruit="fruit" /> -->
-  <ArticleData tilte="What is Cat" author="Mk Rao" :likes="15" :isPublished=true />
+  <ArticleData id="articleId" tilte="What is Cat" author="Mk Rao" :likes="15" :isPublished=true />
 </template>
 
 <script>
