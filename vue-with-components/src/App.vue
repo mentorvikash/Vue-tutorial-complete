@@ -8,7 +8,8 @@
   <PopupExample />
   <InputMain />
   <!-- <SlotMain /> -->
-  <SlotAdvance />
+  <!-- <SlotAdvance /> -->
+  <DynamicTab />
 </template> 
 
 <script>
@@ -18,7 +19,8 @@
 import PopupExample from './components/popup/index.vue';
 import InputMain from './components/customInput/index.vue';
 // import SlotMain from './components/slots/index.vue';
-import SlotAdvance from './components/slotsAdvance/index.vue';
+// import SlotAdvance from './components/slotsAdvance/index.vue';
+import DynamicTab from './components/dynamicTab/index.vue';
 
 export default {
   name: 'App',
@@ -39,7 +41,8 @@ export default {
     PopupExample,
     InputMain,
     // SlotMain,
-    SlotAdvance
+    // SlotAdvance,
+    DynamicTab,
   },
 }
 </script>
