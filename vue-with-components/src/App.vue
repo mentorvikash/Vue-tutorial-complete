@@ -10,6 +10,7 @@
   <!-- <SlotMain /> -->
   <!-- <SlotAdvance /> -->
   <DynamicTab />
+  <TeleportMain />
 </template> 
 
 <script>
@@ -21,6 +22,7 @@ import InputMain from './components/customInput/index.vue';
 // import SlotMain from './components/slots/index.vue';
 // import SlotAdvance from './components/slotsAdvance/index.vue';
 import DynamicTab from './components/dynamicTab/index.vue';
+import TeleportMain from './components/teleport/index.vue';
 
 export default {
   name: 'App',
@@ -43,6 +45,7 @@ export default {
     // SlotMain,
     // SlotAdvance,
     DynamicTab,
+    TeleportMain
   },
 }
 </script>
