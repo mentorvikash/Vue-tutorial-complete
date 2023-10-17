@@ -1,19 +1,21 @@
 <template>
   <h1>Api Request in Vue</h1>
-  <AllPost />
-  <PostRequest />
+  <!-- <AllPost /> -->
+  <!-- <PostRequest /> -->
+  <ResuableCode />
 </template>
 
 <script>
 
-import AllPost from "./components/getRequest/index.vue"
-import PostRequest from "./components/postRequest/index.vue"
-
+// import AllPost from "./components/getRequest/index.vue"
+// import PostRequest from "./components/postRequest/index.vue"
+import ResuableCode from "./components/resuableCode/index.vue"
 export default {
   name: 'App',
   components: {
-    AllPost,
-    PostRequest
+    // AllPost,
+    // PostRequest,
+    ResuableCode
   }
 }
 </script>

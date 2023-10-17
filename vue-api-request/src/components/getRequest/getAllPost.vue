@@ -1,5 +1,5 @@
 <template>
-    <button @click="getPost">Get All Post</button>
+    <!-- <button @click="getPost">Get All Post</button> -->
     <div v-if="error" :style="{ color: 'red' }">{{ error }}</div>
     <div v-for="post in allPost" :key="post.id">
         <h2>{{ post.title }}</h2>
@@ -13,6 +13,10 @@ import axios from "axios"
 
 export default {
     name: 'AllPost',
+    created() {
+        // this created block will trigger on component mount once
+        this.getPost();
+    },
     data() {
         return {
             allPost: [],
